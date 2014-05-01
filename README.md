@@ -1,2 +1,2 @@
 new project website
-django
+Django
