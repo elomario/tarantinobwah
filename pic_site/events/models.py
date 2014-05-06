@@ -1,6 +1,6 @@
 from django.db import models
 from members.models import Member
-from members.teams import Team
+from teams.models import Team
 
 # Create your models here.
 class Event(models.Model):
