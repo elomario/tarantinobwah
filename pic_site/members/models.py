@@ -34,8 +34,10 @@ class Member(models.Model):
         	return self.user.username
 
 class Team(models.Model):
-	team_name = models.CharField(max_length = 200)
-	team_members = models.ManyToManyField('members.Member', blank = True, null = True)
+	team_name = models.CharField(max_length = 200, unique = True)
+	#team_members = models.ManyToManyField('members.Member', blank = True, null = True)
+	#To display all the members of a team, we should add a function that goes through the members table
+	#And filter it, keeping only those who are part of the team
 	team_manager = models.ForeignKey('members.Member', related_name='+', blank = True, null = True)
 	def __unicode__(self):  
         	return self.team_name
