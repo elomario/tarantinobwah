@@ -7,6 +7,6 @@ class Member(models.Model):
 	last_name = models.CharField(max_length = 200)
 	email = models.EmailField(max_length = 254,unique = True)
 	phone_number = models.CharField(max_length = 13)
-	teams = models.ManyToManyField(Team)
+	teams = models.ManyToManyField(Team, null = True, blank = True)
 	def __unicode__(self):  
         	return self.email
