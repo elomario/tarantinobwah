@@ -15,6 +15,7 @@ def index(request):
 
 def detail(request, projects_id):
 	project = get_object_or_404(Project, pk=projects_id)
+	#ordonner membre par alphabeta: members_list= project.members.order_by('-user.username')
 	return render(request, 'projects/description.html', {'project': project})
 	
 def results(request, projects_title):

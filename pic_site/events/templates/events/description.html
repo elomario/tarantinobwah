@@ -1,4 +1,7 @@
-<h1>{{ event.title }}</h1>
+<h1>
+<title>{{ event.title }}</title>
+{{ event.title }}
+</h1>
 <ul>
     <b><u>Description:</u></b>
 	
@@ -7,4 +10,9 @@
 	<u><b>Date:</u></b>
 	
 	<li> {{event.date}} </li>
+	
+	<u><b>Participants:</u></b>
+	{% for participants in event.participants.all %}
+		<li>{{participants.user.username}}</li>
+    {% endfor %}
 </ul>

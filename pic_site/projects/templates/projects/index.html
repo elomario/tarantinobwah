@@ -7,7 +7,8 @@
 {% if latest_projects_list %}
     <ul>
     {% for projects in latest_projects_list %}
-        <li><a href="/projects/{{ projects.id}}/">{{ projects.title }}</a></li>
+        <li><a href="/projects/{{ projects.id}}/">{{ projects.title }} </a></li>
+		deadline-->{{ projects.deadline}}
     {% endfor %}
     </ul>
 {% else %}
