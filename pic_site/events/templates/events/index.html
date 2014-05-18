@@ -1,0 +1,16 @@
+<head>
+<title>Events</title>
+<b><u>Events:</b></u>
+</head>
+
+<body>
+{% if latest_events_list %}
+    <ul>
+    {% for events in latest_events_list %}
+        <li><a href="/events/{{ events.id}}/">{{ events.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Events are available.</p>
+{% endif %}
+</body>
