@@ -8,5 +8,5 @@ class Project(models.Model):
 	team = models.ForeignKey(Team)
 	members = models.ManyToManyField(Member)
 	deadline = models.DateField()
-	def __unicode__(self):  
+	def __str__(self):  
         	return self.title

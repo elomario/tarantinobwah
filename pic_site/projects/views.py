@@ -13,8 +13,10 @@ def index(request):
     return HttpResponse(template.render(context))
 
 def detail(request, projects_title):
-    return HttpResponse("You're looking at project %s." % projects_title)
-
+    latest_projects_list = Project.objects.order_by('-title')[:5]
+    output = ', '.join([p.title for p in latest_projects_list])
+    return HttpResponse(output)
+	
 def results(request, projects_title):
     return HttpResponse("You're looking at the results of project %s." % projects_title)
 

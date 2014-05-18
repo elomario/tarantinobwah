@@ -30,7 +30,7 @@ class Member(models.Model):
 	school_year = models.CharField(max_length = 1, choices = YEAR_IN_SCHOOL_CHOICES, blank = True)
 	phone_number = models.CharField(max_length = 13, blank = True)
 	teams = models.ManyToManyField('members.Team', null = True, blank = True)
-	def __unicode__(self):  
+	def __str__(self):  
         	return self.user.username
 
 class Team(models.Model):
@@ -39,5 +39,5 @@ class Team(models.Model):
 	#To display all the members of a team, we should add a function that goes through the members table
 	#And filter it, keeping only those who are part of the team
 	team_manager = models.ForeignKey('members.Member', related_name='+', blank = True, null = True)
-	def __unicode__(self):  
+	def __str__(self):  
         	return self.team_name
