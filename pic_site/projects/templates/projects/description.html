@@ -42,20 +42,38 @@
     </div>
 </div>
 <div class="container">
-<ul>
-    <b><u>Description:</u></b>
-	<li> {{project.description}} </li>
+	<ul>
+		<h2>{{project.title}}</h2>
+		<p><hr> </p>
+		<b><u>Description:</u></b>
+		<li> {{project.description}} </li>
 	
-	<u><b>Deadline:</u></b>
-	<li> {{project.deadline}} </li>
+		<u><b>Deadline:</u></b>
+		<li> {{project.deadline}} </li>
 	
-	<b><u>Team:</u> (for now, one team per project)</b>
-	<li> {{project.team}} </li>
+		<b><u>Team:</u> (for now, one team per project)</b>
+		<li> {{project.team}} </li>
 	
-	<u><b>Members:</u></b>
-	{% for members in project.members.all %}
-		<li>{{members.user.username}}</li> {{members.teams.all}}
-    {% endfor %}
-</ul>
+		<u><b>Members:</u></b>
+		{% for members in project.members.all %}
+			<li>{{members.user.username}}</li> {{members.teams.all}}
+		{% endfor %}
+	</ul>
+	
+	<p><hr> </p>
+	
+    <footer class="row">
+        <div class="span6">
+            <p>This is <a href="https://github.com/dyve/django-bootstrap-toolkit">django-bootstrap-toolkit</a></p>
+        </div>
+        <div class="span6" style="text-align:right">
+            <p>
+                &copy; <a href="http://twitter.com/dyve">Dylan Verheul</a> 2012
+                |
+                <a href="https://raw.github.com/dyve/django-bootstrap-toolkit/master/LICENSE">license</a>
+            </p>
+        </div>
+    </footer>
+	
 </div>
 </body>

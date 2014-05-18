@@ -42,19 +42,37 @@
     </div>
 </div>
 <div class="container">
-<ul>
-    <b><u>Description:</u></b>
+	<ul>
+		<h2>{{event.name}}</h2>
+		<p><hr> </p>
+		<b><u>Description:</u></b>
 	
-	<li> {{event.description}} </li>
+		<li> {{event.description}} </li>
 	
-	<u><b>Date:</u></b>
+		<u><b>Date:</u></b>
 	
-	<li> {{event.date}} </li>
+		<li> {{event.date}} </li>
 	
-	<u><b>Participants:</u></b>
-	{% for participants in event.participants.all %}
-		<li>{{participants.user.username}}</li>
-    {% endfor %}
-</ul>
+		<u><b>Participants:</u></b>
+		{% for participants in event.participants.all %}
+			<li>{{participants.user.username}}</li>
+		{% endfor %}
+	</ul>
+
+	<p><hr> </p>
+	
+    <footer class="row">
+        <div class="span6">
+            <p>This is <a href="https://github.com/dyve/django-bootstrap-toolkit">django-bootstrap-toolkit</a></p>
+        </div>
+        <div class="span6" style="text-align:right">
+            <p>
+                &copy; <a href="http://twitter.com/dyve">Dylan Verheul</a> 2012
+                |
+                <a href="https://raw.github.com/dyve/django-bootstrap-toolkit/master/LICENSE">license</a>
+            </p>
+        </div>
+    </footer>
+	
 </div>
 </body>

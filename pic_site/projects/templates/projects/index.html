@@ -42,15 +42,33 @@
     </div>
 </div>
 <div class="container">
-{% if latest_projects_list %}
-    <ul>
-    {% for projects in latest_projects_list %}
-        <li><a href="/projects/{{ projects.id}}/">{{ projects.title }} </a></li>
-		deadline-->{{ projects.deadline}}
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No projects are available.</p>
-{% endif %}
+	<h2>List of Projects</h2>
+	<p><hr> </p>
+	{% if latest_projects_list %}
+		<ul>
+		{% for projects in latest_projects_list %}
+			<li><a href="/projects/{{ projects.id}}/">{{ projects.title }} </a></li>
+			deadline-->{{ projects.deadline}}
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No projects are available.</p>
+	{% endif %}
+	
+		<p><hr> </p>
+	
+    <footer class="row">
+        <div class="span6">
+            <p>This is <a href="https://github.com/dyve/django-bootstrap-toolkit">django-bootstrap-toolkit</a></p>
+        </div>
+        <div class="span6" style="text-align:right">
+            <p>
+                &copy; <a href="http://twitter.com/dyve">Dylan Verheul</a> 2012
+                |
+                <a href="https://raw.github.com/dyve/django-bootstrap-toolkit/master/LICENSE">license</a>
+            </p>
+        </div>
+    </footer>
+	
 </div>
 </body>
