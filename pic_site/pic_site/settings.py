@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'events',
     'projects',
     'comments',
+	'bootstrap_toolkit',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -1,8 +1,48 @@
+{% load bootstrap_toolkit %}
+{% load url from future %}
+<html lang="en">
 <head>
-<title>Presentation</title>
+    <meta charset="utf-8">
+    <title>Presentation</title>
+    <meta name="description" content="">
+    <meta name="author" content="Dylan Verheul">
+    {% bootstrap_stylesheet_tag %}
+    {% bootstrap_stylesheet_tag "responsive" %}
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    {% bootstrap_javascript_tag %}
+    {% block extra_head %}{% endblock %}
 </head>
-
 <body>
-<h1>Hello, here's the presentation page of the PIC!</h1>
-<p> Here's paragraph</p>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/home">PIC</a>
+            <ul class="nav">
+                <li><a href="{%url 'actualites' %}"> Actualites </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Informations<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{%url 'presentation' %}"> Presentation </a></li>
+						<li><a href="{%url 'shell' %}"> Shell Eco-marathon </a></li>
+                    </ul>
+                </li>
+                <li><a href="/projects"> Projets</a></li>
+				<li><a href="/events"> Evenements </a></li>
+				<li><a href="/admin"> Administrateur </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+	Hello, here's the presentation page of the PIC!
+	<p> Here's paragraph</p>
+</div>
 </body>

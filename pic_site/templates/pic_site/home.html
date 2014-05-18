@@ -1,10 +1,88 @@
-<head>
+{% load bootstrap_toolkit %}
+
+<!--<head>
 <title>Home</title>
 </head>
+
+<form action="/url/to/submit/" method="post">
+    {% csrf_token %}
+    {{ form|as_bootstrap }}
+    <div class="actions">
+        <button type="submit" class="btn primary">Submit</button>
+    </div>
 
 <body>
 	Hello, here's the homepage
 	<li><a href="{%url 'actualites' %}"> Actualites </a></li>
 	<li><a href="{%url 'presentation' %}"> Presentation </a></li>
 	<li><a href="{%url 'shell' %}"> Shell Eco-marathon </a></li>
+</body>-->
+
+{% load url from future %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <meta name="description" content="">
+    <meta name="author" content="Dylan Verheul">
+    {% bootstrap_stylesheet_tag %}
+    {% bootstrap_stylesheet_tag "responsive" %}
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    {% bootstrap_javascript_tag %}
+    {% block extra_head %}{% endblock %}
+	<p>&nbsp;I'm a Homepage, and now i'm in the main body thingy, i must be better organized to be a beauty</p>
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/home">PIC</a>
+            <ul class="nav">
+                <li><a href="{%url 'actualites' %}"> Actualites </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Informations<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{%url 'presentation' %}"> Presentation </a></li>
+						<li><a href="{%url 'shell' %}"> Shell Eco-marathon </a></li>
+                    </ul>
+                </li>
+                <li><a href="/projects"> Projets</a></li>
+				<li><a href="/events"> Evenements </a></li>
+				<li><a href="/admin"> Administrateur </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+
+    <p><hr></p>
+
+    <footer class="row">
+        <div class="span6">
+            <p>This is <a href="https://github.com/dyve/django-bootstrap-toolkit">django-bootstrap-toolkit</a></p>
+        </div>
+        <div class="span6" style="text-align:right">
+            <p>
+                &copy; <a href="http://twitter.com/dyve">Dylan Verheul</a> 2012
+                |
+                <a href="https://raw.github.com/dyve/django-bootstrap-toolkit/master/LICENSE">license</a>
+            </p>
+        </div>
+    </footer>
+
+</div> <!-- container -->
+
 </body>
+</html>
