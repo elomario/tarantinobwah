@@ -1,9 +1,16 @@
+<head>
+<title>Projets</title>
+<b><u>Projets:</b></u>
+</head>
+
+<body>
 {% if latest_projects_list %}
     <ul>
     {% for projects in latest_projects_list %}
-        <li><a href="/projects/{{ projects.title }}/">{{ projects.title }}</a></li>
+        <li><a href="/projects/{{ projects.id}}/">{{ projects.title }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No projects are available.</p>
 {% endif %}
+</body>
