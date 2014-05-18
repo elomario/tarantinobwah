@@ -1,5 +1,8 @@
+
+{% load staticfiles %}
 {% load bootstrap_toolkit %}
 {% load url from future %}
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -42,9 +45,17 @@
     </div>
 </div>
 <div class="container">
-	<p>Hello, here's the presentation page of the PIC!<br>
-	 Once upon a time...</p>
-	 
+
+	<p>Le Proto INSA Club est une association Loi 1901.Son but est de concevoir et de realiser un vehicule a faible consommation de carburant afin de prendre
+	part au Shell eco-marathon et de l'EducEco.</p>
+	<p>Ce club fut fonde en 1991 a l'initative d'un groupe d'etudiants du departement Genie Mecanique Construction
+	Son premier prototybe, baptise ENVOL et entierement realise par des eleves, fu aligne l'annee suivante au depart du huitieme marathon.
+	</p>
+	<p>Le club n'a depuis cesse de monter en puissance, aussi bien sur la piste qu'au sien du campus. Il est actuellement anime par une trentaine de passiones, etudaints dans les differents departements de l'ecole</p>
+	<center><img src="{% static "../../static/pic_site/equipe.jpg" %}" alt="Equipe" align="absmiddle"/></center>
+	<style>
+	img {max-width: 100%; height: auto;}
+	</style>
 	 <p><hr> </p>
 	
     <footer class="row">
