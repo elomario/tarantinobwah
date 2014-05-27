@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'events',
     'projects',
     'comments',
+    'ecomments',
 	'news',
 	'presentation',
 	'bootstrap_toolkit',

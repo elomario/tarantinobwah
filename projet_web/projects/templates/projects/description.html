@@ -63,37 +63,58 @@
 
 <div class="container">
 	<ul>
-		<h2>{{project.title}}</h2>
-		<p><hr> </p>
-		<b><u>Description:</u></b>
-		<li> {{project.description}} </li>
-	
-		<u><b>Deadline:</u></b>
-		<li> {{project.deadline}} </li>
-	
-		<b><u>Team:</u> (for now, one team per project)</b>
-		<li> {{project.team}} </li>
-	
-		<u><b>Members:</u></b>
-		{% for members in project.members.all %}
-			<li>{{members.user.username}}</li>
-		{% endfor %}
+    <h2>{{project.title}}</h2>
+    <p><hr> </p>
+    <b><u>Description:</u></b>
+    <li> {{project.description}} </li>
+  
+    <u><b>Deadline:</u></b>
+    <li> {{project.deadline}} </li>
+  
+    <b><u>Team:</u> (for now, one team per project)</b>
+    <li> {{project.team}} </li>
+  
+    <u><b>Members:</u></b>
+    {% for members in project.members.all %}
+      <li>{{members.user.username}}</li>
+    {% endfor %}
 
-		<p><br></p>
-		{% for comments in comment_list %}
-			<li>{{comment.core_of_comment}}</li> {{comment.member_commenting.name}}
-		{% endfor %}
-		<form action="/projects/{{project.id}}/" method="post">
-			{% csrf_token %}
-			<input type="hidden" name="user" value="{{user.id}}">
-			<input type="submit" name="participate" value="I want in!" />
-		</form>
-		<form action="/projects/{{project.id}}/" method="post">
-			{% csrf_token %}
-			<input type="hidden" name="a_user" value="{{user.id}}">
-			<input type="submit" name="abandon" value="Abandon Ship!" />
-		</form>
-	</ul>	
+    <p><br></p>
+    <form action="/projects/{{project.id}}/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="user" value="{{user.id}}">
+      <input type="submit" name="participate" value="I want in!" />
+    </form>
+    <form action="/projects/{{project.id}}/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="a_user" value="{{user.id}}">
+      <input type="submit" name="abandon" value="Abandon Ship!" />
+    </form>
+    <h3>Comments</h3>
+    {% for comments in comments_list %}
+      {% if comments.project_commenting_on.id = project.id %}
+      <li>{{comments.core_of_comment}} ||by: {{comments.member_commenting.user.username}}</li>
+      {{comments.posting_date}}
+      
+      {% if comments.member_commenting.user.id == user.id %}
+        <form action="/projects/{{project.id}}/" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="c_id" value={{comments.id}}>
+          <input type="submit" name="delete" value="delete"/>
+        </form>
+      {% endif %}
+      {% endif %}
+    {% endfor %}  
+    <p><br></p>
+    {% if user.member in project.members.all%}
+    <form action="/projects/{{project.id}}/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="c_user" value="{{user.id}}">
+      <input type="text" name="comment">
+      <input type="submit" name="submit" value="comment"/>
+    </form>
+    {% endif %}
+  </ul>
 </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
