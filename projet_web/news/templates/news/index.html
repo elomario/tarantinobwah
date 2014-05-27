@@ -1,0 +1,81 @@
+{% load bootstrap_toolkit %}
+{% load url from future %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>News</title>
+    <meta name="description" content="">
+    <meta name="author" content="Dylan Verheul">
+    {% bootstrap_stylesheet_tag %}
+    {% bootstrap_stylesheet_tag "responsive" %}
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    {% bootstrap_javascript_tag %}
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top" role="navigation">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/home" > PIC </a>
+            <ul class="nav">
+                <li><a href="/actualites" > Actualites </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Informations<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/presentation"> Presentation </a></li>
+                        <li><a href="/shell"> Shell Eco-marathon </a></li>
+                    </ul>
+                </li>
+                {% if user.is_authenticated %}
+                    <li><a href="/projects"> Projets</a></li>
+                    <li><a href="/events"> Evenements </a></li>
+                    <li><a href="/admin"> Administrateur </a></li>
+                    <li><a href="/home"> Sign out </a></li>
+                    <li><p class="navbar-text"> Signed in as {{ user.username }} </p>                    
+                {% else %}
+                    <li><a href="/members"> Espace Membre</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container">
+	<h2>Actualites du PIC</h2>
+	<p><hr> </p>
+	{% if latest_news_list %}
+		<ul>
+		{% for news in latest_news_list %}
+			<h3>{{ news.title }}</h3>
+			<i>date de publication:</i> &nbsp {{ news.publication_date}} <br><br>
+			{{ news.text}}
+			<p><br></p>
+            {% for videos in video_list %}
+                {% ifequal videos.new.title news.title %}
+					<center>
+					<iframe width="560" height="315" src="{{videos.video}}" frameborder="0" allowfullscreen></iframe>
+					</center>
+					<p><br></p>
+				{% endifequal %}
+			{% endfor %}
+			{% for images in image_list %}
+				{% ifequal images.new.title news.title %}
+					<img src="{{images.image}}" alt="Not Rendered">
+				{% endifequal %}
+			{% endfor %}
+			<p><hr> </p>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No news are available.</p>
+	{% endif %}
+</div>
+</body>

@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Proto INSA Club site admin' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans 'Proto INSA Club' %}</h1>
+
+        <div class="container">
+            <ul class="nav">
+                    <li><a href="/home"> Home</a></li>
+            </ul>
+        </div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
