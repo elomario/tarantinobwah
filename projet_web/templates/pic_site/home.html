@@ -12,7 +12,7 @@
     <title> PIC </title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{% static 'bootstrap/docs/examples/carousel/carousel.css' %}" rel="stylesheet">
@@ -193,17 +193,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'bootstrap/docs/assets/js/docs.min.js' %}"></script>              
     <script src="{% static 'bootstrap/docs/assets/js/vendor/holder.js' %}"></script>
-    <script>
-    // Load this when the DOM is ready
-    $(function(){
-      // You used .myCarousel here. 
-      // That's the class selector not the id selector,
-      // which is #myCarousel
-      $('#myCarousel').carousel();
-    });
-    </script>
   </body>
 </html>

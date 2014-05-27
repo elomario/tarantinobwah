@@ -11,5 +11,4 @@ class NewAdmin(admin.ModelAdmin):
 	list_display = ('title', 'publication_date')
 	inlines=[InlineImage, InlineVideo]
 
-# Register your models here.
 admin.site.register(New,NewAdmin)

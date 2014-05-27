@@ -1,11 +1,9 @@
-from django.shortcuts import render
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
-from django import forms
-from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render,render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.models import User
+from django.template import RequestContext
+from django import forms
 
 def member_login(request):
     # Like before, obtain the context for the user's request.
@@ -47,7 +45,7 @@ def member_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
 		return render_to_response('members/login.html', {}, context)
-	#return render(request,'members/login.html')
+	
 	
 def member_logout(request):
     logout(request)

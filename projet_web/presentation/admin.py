@@ -11,5 +11,4 @@ class PresentationAdmin(admin.ModelAdmin):
 	list_display = ('title', 'text')
 	inlines=[InlineImage, InlineVideo]
 
-# Register your models here.
 admin.site.register(Presentation,PresentationAdmin)

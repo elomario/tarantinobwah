@@ -8,7 +8,5 @@ class MemberAdmin(admin.ModelAdmin):
 class TeamAdmin(admin.ModelAdmin):
 	list_display=('team_name','team_manager')
 
-# Register your models here.
 admin.site.register(Member,MemberAdmin)
-
 admin.site.register(Team,TeamAdmin)

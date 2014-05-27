@@ -1,7 +1,6 @@
 from django.db import models
 from members.models import Member, Team
 
-# Create your models here.
 class Event(models.Model):
 	name = models.CharField(max_length = 200)
 	date = models.DateTimeField('date')

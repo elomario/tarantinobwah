@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 class Member(models.Model):
 	DEPARTMENT_CHOICES = (
 	        ('BIM', 'BIM'),
@@ -35,8 +34,6 @@ class Member(models.Model):
 
 class Team(models.Model):
 	team_name = models.CharField(max_length = 200, unique = True)
-	#To display all the members of a team, we should add a function that goes through the members table
-	#And filter it, keeping only those who are part of the team
 	team_manager = models.ForeignKey('members.Member', related_name='+', blank = True, null = True)
 	def __str__(self):  
         	return self.team_name

@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from events.models import Event, Member
 from django.contrib.auth.models import User
-# Create your views here.
 
 def index(request):
     latest_events_list = Event.objects.order_by('-name')[:5]
@@ -33,7 +32,3 @@ def detail(request, events_id):
 	
 def results(request, projects_title):
     return HttpResponse("You're looking at the results of event %s." % projects_title)
-
-
-
-# Create your views here.
