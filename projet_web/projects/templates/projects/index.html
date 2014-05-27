@@ -62,6 +62,7 @@
 
 
 <div class="container">
+  {% if user.is_authenticated %}
 	<h2>List of Projects</h2>
 	<p><hr> </p>
 	{% if latest_projects_list %}
@@ -74,7 +75,12 @@
 	{% else %}
 		<p>No projects are available.</p>
 	{% endif %}
+  {% else %}
+  <br><br><br><br><br>
+  <h1> Please sign in!</h1>
+  {% endif %}
 </div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

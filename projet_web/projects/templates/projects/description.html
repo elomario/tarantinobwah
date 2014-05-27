@@ -63,6 +63,8 @@
 
 <div class="container">
 	<ul>
+
+  {% if user.is_authenticated %}
     <h2>{{project.title}}</h2>
     <p><hr> </p>
     <b><u>Description:</u></b>
@@ -114,6 +116,10 @@
       <input type="submit" name="submit" value="comment"/>
     </form>
     {% endif %}
+  {% else %}
+    <br><br><br><br><br>
+    <h1> Please sign in!</h1>
+  {% endif %}
   </ul>
 </div>
     <!-- Bootstrap core JavaScript

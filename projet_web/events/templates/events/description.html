@@ -62,6 +62,7 @@
 
 
 <div class="container">
+{% if user.is_authenticated %}
 <ul>
   <h2>{{event.name}}</h2>
   <p><hr> </p>
@@ -116,6 +117,10 @@
   </form>
   {% endif %}
 </ul>	
+{% else %}
+  <br><br><br><br><br>
+  <h1> Please sign in!</h1>
+  {% endif %}
 </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
