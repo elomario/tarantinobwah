@@ -49,7 +49,7 @@
                     <li><a href="/events"> Evenements </a></li>
                     <li><a href="/admin"> Administrateur </a></li>
                     <li><a href="/members/logout"> Sign out </a></li>  
-                    <li><p class="navbar-text"> Signed in as {{ user.username }} </p>             
+                    <li><p class="navbar-text"> Signed in as {{ user.username }} </p></li>             
                 {% else %}
                     <li><a href="/members"> Espace Membre</a></li>
                 {% endif %}
@@ -60,37 +60,62 @@
       </div>
     </div>
 
+<!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<div class="container">
-	<h2>Actualites du PIC</h2>
-	<p><hr> </p>
-	{% if latest_news_list %}
-		<ul>
-		{% for news in latest_news_list %}
-			<h3>{{ news.title }}</h3>
-			<i>date de publication:</i> &nbsp {{ news.publication_date}} <br><br>
-			{{ news.text}}
-			<p><br></p>
-            {% for videos in video_list %}
+    <div class="container marketing">
+      <!-- START THE FEATURETTES -->
+
+    {% if latest_news_list %}
+    <ul>
+    {% for news in latest_news_list %}
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">{{ news.title }} </h2>
+          <h5><span class="text-muted"><i>date de publication:</i>{{ news.publication_date}}<br><br></span></h5>
+          <p class="lead">{{ news.text}}</p>
+        </div>
+        <div class="col-md-5">
+        {% for videos in video_list %}
                 {% ifequal videos.new.title news.title %}
-					<center>
-					<iframe width="560" height="315" src="{{videos.video}}" frameborder="0" allowfullscreen></iframe>
-					</center>
-					<p><br></p>
-				{% endifequal %}
-			{% endfor %}
-			{% for images in image_list %}
-				{% ifequal images.new.title news.title %}
-					<img src="{{images.image}}" alt="Not Rendered">
-				{% endifequal %}
-			{% endfor %}
-			<p><hr> </p>
-		{% endfor %}
-		</ul>
-	{% else %}
-		<p>No news are available.</p>
-	{% endif %}
-</div>
+          <!-- <center> -->
+          <br><br><br><br><br><br><br>
+          <div class="vid">
+                <iframe width="560" height="315" src="{{videos.video}}" allowfullscreen=""></iframe>
+            </div>
+          
+          <!-- <iframe width="560" height="315" src="{{videos.video}}" frameborder="0" allowfullscreen></iframe> -->
+          <!-- </center> -->
+          <p><br></p>
+        {% endifequal %}
+      {% endfor %}
+      {% for images in image_list %}
+        {% ifequal images.new.title news.title %}
+          <img class="featurette-image img-responsive" src="../{{images.image}}" alt="Not Rendered">
+        {% endifequal %}
+      {% endfor %}
+        </div>
+      </div>
+    {% endfor %}    
+    <hr class="featurette-divider">
+    </ul>
+  {% else %}
+    <p>No news are available.</p>
+  {% endif %}
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -8,7 +8,7 @@ class Presentation(models.Model):
 
 class Image(models.Model):
 	presentation = models.ForeignKey(Presentation)
-	image = models.ImageField(upload_to='static/images')
+	image = models.ImageField(upload_to = 'static/images')
 
 class Video(models.Model):
 	presentation = models.ForeignKey(Presentation)

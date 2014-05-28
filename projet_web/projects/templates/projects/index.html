@@ -60,26 +60,42 @@
       </div>
     </div>
 
+<br>
+<br>
+<br>
 
-<div class="container">
-  {% if user.is_authenticated %}
-	<h2>List of Projects</h2>
-	<p><hr> </p>
-	{% if latest_projects_list %}
-		<ul>
-		{% for projects in latest_projects_list %}
-			<li><a href="/projects/{{ projects.id}}/">{{ projects.title }} </a></li>
-			deadline-->{{ projects.deadline}}
-		{% endfor %}
-		</ul>
-	{% else %}
-		<p>No projects are available.</p>
-	{% endif %}
-  {% else %}
-  <br><br><br><br><br>
-  <h1> Please sign in!</h1>
-  {% endif %}
-</div>
+<!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+      {% if user.is_authenticated %}
+      <p><hr> </p>
+    {% if latest_projects_list %}
+    <ul>
+    {% for projects in latest_projects_list %}
+        <div class="col-lg-4">
+          <!-- <img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image"> -->
+          <img src="{% static 'images/project1.jpg' %}" alt="Projets PIC" class="img-circle" height="140" width="140">
+          <h2> {{ projects.title }} </h2>
+          <p>deadline-->{{ projects.deadline}}</p>
+          <p><a class="btn btn-default" href="/projects/{{ projects.id}}/" role="button">View Project &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        {% endfor %}
+        </ul>
+        {% else %}
+      <p>No projects are available.</p>
+    {% endif %}
+    {% else %}
+      <br><br><br><br><br>
+      <h1> Please sign in!</h1>
+      {% endif %}
+      </div><!-- /.row -->
+  </div><!-- /.container marketing-->   
+
+        <hr class="featurette-divider">
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

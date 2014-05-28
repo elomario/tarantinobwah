@@ -9,7 +9,7 @@ class New(models.Model):
 
 class Image(models.Model):
 	new = models.ForeignKey(New)
-	image = models.ImageField(upload_to='static/pic_site')
+	image = models.ImageField(upload_to = 'static/images')
 
 class Video(models.Model):
 	new = models.ForeignKey(New)

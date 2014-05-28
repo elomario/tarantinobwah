@@ -68,14 +68,14 @@
 			<h3>{{ presentation.title }}</h3>
 			{{ presentation.text}}
 			<p><br></p>
-            {% for videos in video_list %}
-                <center>
+      {% for videos in video_list %}
+        <center>
 				<iframe width="560" height="315" src="{{videos.video}}" frameborder="0" allowfullscreen></iframe>
 				</center>
 				<p><br></p>
 			{% endfor %}
 			{% for images in image_list %}
-				<img src="{{images.image}}" alt="Not Rendered">
+        <img class="featurette-image img-responsive" src="{{images.image}}" alt="Not Rendered">
 			{% endfor %}
 			<p><hr> </p>
 	{% else %}
