@@ -60,68 +60,86 @@
       </div>
     </div>
 
+<br><br><br><br>
+    {% if user.is_authenticated %}
+  <div class="panel panel-primary margin">
+      <div class="panel-heading">
+        <h2 class="panel-title"> <h3>{{event.name}}</h3> </h2>
+      </div>
+      <div class="panel-body">
+        <b><u>Description:</u></b>
+        <p> {{event.description}} </p>
+      </div>
+      <div class="panel-body">
+        <u><b>Participants:</u></b>
+        <ol>
+          {% for participants in event.participants.all %}
+            <li>{{participants.user.username}}</li>
+            {% endfor %}
+          </ol>
+      </div>
+      <div class="panel-body">
+        <form action="/events/{{event.id}}/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="user" value="{{user.id}}">
+            <input type="submit" name="participate" value="Participer!" />
+        </form>
+		<p><br></p>
+        <form action="/events/{{event.id}}/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="a_user" value="{{user.id}}">
+            <input type="submit" name="abandon" value="Se desinscrire!" />
+        </form>
+      </div>
+  </div>
 
-<div class="container">
-{% if user.is_authenticated %}
-<ul>
-  <h2>{{event.name}}</h2>
-  <p><hr> </p>
-  <b><u>Description:</u></b>
 
-  <li> {{event.description}} </li>
-
-  <u><b>Date:</u></b>
-
-  <li> {{event.date}} </li>
-
-  <u><b>Participants:</u></b>
-  {% for participants in event.participants.all %}
-    <li>{{participants.user.username}}</li>
-  {% endfor %}
-  <p><br></p>
-  {% for comments in comment_list %}
-    <li>{{comment.core_of_comment}}</li> {{comment.member_commenting.name}}
-  {% endfor %}
-  <form action="/events/{{event.id}}/" method="post">
-    {% csrf_token %}
-    <input type="hidden" name="user" value="{{user.id}}">
-    <input type="submit" name="participate" value="I want in!" />
-  </form>
-  <form action="/events/{{event.id}}/" method="post">
-    {% csrf_token %}
-    <input type="hidden" name="a_user" value="{{user.id}}">
-    <input type="submit" name="abandon" value="Abandon Ship!" />
-  </form>
-          <h3>Comments</h3>
-  {% for ecomments in ecomments_list %}
-    {% if ecomments.event_commenting_on.id = event.id %}
-    <li>{{ecomments.core_of_comment}} ||by: {{ecomments.member_commenting.user.username}}</li>
-    {{ecomments.posting_date}}
+    <p><br></p>
+    <div class="panel panel-info margin2">
+      <div class="panel-heading">
+        <h2 class="panel-title"> <h3>Comments on the event : <i>{{event.name}}</i></h3> </h2>
+    </div>
+      <div class="panel-body">
+        <ul class="list-group">
+        {% for ecomments in ecomments_list %}
+        {% if ecomments.event_commenting_on.id = event.id %}
+  <li class="list-group-item">
+    <span class="badge">{{ecomments.posting_date}}</span>
+    {{ecomments.core_of_comment}} <br>
+    <i>by: {{ecomments.member_commenting.user.username}}</i>
+  </li>
+   
+      {% if ecomments.member_commenting.user.id == user.id %}
+        <form action="/projects/{{project.id}}/" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="c_id" value={{ecomments.id}}>
+          <input type="submit" name="delete" value="delete"/>
+        </form>
+      {% endif %}
+      {% endif %}
+    {% endfor %}  
+    </ul> 
+    <p><br></p>
+    {% if user.member in event.participants.all%}
+    <form action="/events/{{event.id}}/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="c_user" value="{{user.id}}">
+      <input type="text" name="comment">
+      <input type="submit" name="submit" value="Submit"/>
+    </form>
+    {% endif %}
+      </div>
+    </div>
     
-    {% if ecomments.member_commenting.user.id == user.id %}
-      <form action="/events/{{event.id}}/" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="c_id" value={{ecomments.id}}>
-        <input type="submit" name="delete" value="delete"/>
-      </form>
-    {% endif %}
-    {% endif %}
-  {% endfor %}
-  <p><br></p>
-  {% if user.member in event.participants.all%}
-  <form action="/events/{{event.id}}/" method="post">
-    {% csrf_token %}
-    <input type="hidden" name="c_user" value="{{user.id}}">
-    <input type="text" name="comment">
-    <input type="submit" name="submit" value="comment">
-  </form>
+  {% else %}
+    <br><br><br><br><br>
+    <h1> Please sign in!</h1>
   {% endif %}
-</ul>	
-{% else %}
-  <br><br><br><br><br>
-  <h1> Please sign in!</h1>
-  {% endif %}
+  </ul>
 </div>
+
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
