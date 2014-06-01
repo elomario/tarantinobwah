@@ -1,2 +1,1 @@
-new project website
-Django
+School project.
